@@ -14,7 +14,7 @@ export type AdvertType = {
 
 export type ImageType = {
   id: number,
-  src: string | null,
+  src: string,
   description: string | null
 }
 
