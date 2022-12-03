@@ -5,16 +5,14 @@ import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
 
 import Head from 'next/head'
-import CssBaseline from '@mui/material/CssBaseline'
-import { ThemeProvider } from '@mui/material/styles'
 import { CacheProvider, EmotionCache } from '@emotion/react'
 import { DefaultSeo } from 'next-seo'
 
 // src
 import SEO from '../next-seo.config'
-import theme from '../src/theme'
 import createEmotionCache from '../src/createEmotionCache'
 import AuthContextProvider from '../src/providers/AuthContextProvider'
+import ThemeContextProvider from '../src/providers/ThemeContextProvider'
 
 const clientSideEmotionCache = createEmotionCache()
 
@@ -42,12 +40,11 @@ export default function MyApp({ Component, emotionCache = clientSideEmotionCache
       </Head>
       <DefaultSeo {...SEO} />
 
-      <ThemeProvider theme={theme}>
-        <CssBaseline/>
-        <AuthContextProvider>
+      <AuthContextProvider>
+        <ThemeContextProvider>
           {getLayout(<Component {...pageProps} />)}
-        </AuthContextProvider>
-      </ThemeProvider>
+        </ThemeContextProvider>
+      </AuthContextProvider>
     </CacheProvider>
   )
 }
