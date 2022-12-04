@@ -1,7 +1,8 @@
 export default {
   styleOverrides: {
     root: {
-      textTransform: 'inherit'
+      textTransform: 'inherit',
+      borderRadius: 8
     }
   }
 }

@@ -66,6 +66,7 @@ export default function ProductImagePreview({ images }: ProductImagePreviewProps
           {images.map((image) => (
             <OverLayerItem
               count={count}
+              key={image.id}
               onMouseEnter={setCurrentImage.bind(null, image.src)}
             >
               <Indicator color={image.src === currentImage ? 'secondary.light' : 'white'} />

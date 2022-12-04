@@ -52,7 +52,7 @@ interface GridProductCardProps {
 export default function GridProductCard({ product }: GridProductCardProps) {
 
   return (
-    <RoundedCard elevation={4} square>
+    <RoundedCard elevation={0} square>
 
       <LikeButton size="small" aria-label="Like Button">
         <FavoriteBorderRoundedIcon color="primary" />

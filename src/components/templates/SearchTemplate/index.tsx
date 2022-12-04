@@ -3,7 +3,7 @@ import React, { ReactElement } from 'react'
 import Container from '@mui/material/Container'
 
 // src
-import Header from '../../atoms/Header'
+import Header from '../../molecules/Header'
 
 interface SearchTemplate {
   children: ReactElement
