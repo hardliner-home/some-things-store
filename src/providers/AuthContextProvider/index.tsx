@@ -32,16 +32,20 @@ export default function AuthContextProvider({ children }: AuthContextProviderPro
   const [auth, setAuth] = useState<DefaultAuthStateType>(defaultAuthState)
 
   useEffect(() =>  {
-    setAuth({ ...auth, isLoading: true })
     axiosClient.get('/users/sign_in')
       .then(response => {
-        setAuth({ ...auth, isSignedIn: true, user: response.data })
+        setAuth({
+          isLoading: false,
+          isSignedIn: true,
+          user: response.data
+        })
       })
       .catch((error) => {
-        setAuth({ ...auth, isSignedIn: false, user: null })
-      })
-      .finally(() => {
-        setAuth({ ...auth, isLoading: false })
+        setAuth({
+          isLoading: false,
+          isSignedIn: false,
+          user: null
+        })
       })
   }, [])
 

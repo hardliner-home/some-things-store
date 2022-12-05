@@ -35,3 +35,5 @@ export type ProductType = {
 }
 
 export type ThemeType = 'light' | 'dark'
+
+export type AuthApiVariantType = 'signIn' | 'signUp'
