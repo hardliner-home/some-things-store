@@ -36,4 +36,14 @@ export type ProductType = {
 
 export type ThemeType = 'light' | 'dark'
 
-export type AuthApiVariantType = 'signIn' | 'signUp'
+export type AuthApiVariantType = 'signIn' | 'signUp' | 'signOut'
+
+export type UserType = {
+  id: number,
+  phone: string,
+  email: string
+  firstName: string,
+  lastName: string,
+  fullName: string,
+  profilePicture: string | null,
+}

@@ -19,7 +19,7 @@ import { ProductType } from '../../../types'
 import ProductImagePreview from '../ProductImagePreview'
 
 const RoundedCard = styled(Card)`
-  // border-radius: 10px;
+  //border-radius: 8px;
   position: relative;
 `
 
@@ -52,8 +52,7 @@ interface GridProductCardProps {
 export default function GridProductCard({ product }: GridProductCardProps) {
 
   return (
-    <RoundedCard elevation={0} square>
-
+    <RoundedCard elevation={2} square>
       <LikeButton size="small" aria-label="Like Button">
         <FavoriteBorderRoundedIcon color="primary" />
       </LikeButton>
@@ -66,6 +65,7 @@ export default function GridProductCard({ product }: GridProductCardProps) {
         <Typography
           variant="subtitle1"
           fontWeight="bold"
+          color="primary"
           component={Link}
           href={`/${product.id}`}
         >
@@ -99,7 +99,6 @@ export default function GridProductCard({ product }: GridProductCardProps) {
             <MoreHorizRoundedIcon/>
           </IconButton>
         </PriceContainer>
-
       </ProductCardContent>
     </RoundedCard>
   )

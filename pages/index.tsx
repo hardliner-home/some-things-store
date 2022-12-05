@@ -8,11 +8,26 @@ import GridProductCard from '../src/components/atoms/GridProductCard'
 import { dummyProducts } from '../src/constants'
 
 export default function Home({ data }: { data: string }) {
-  console.log('data', data)
 
   return (
     <>
-      <Typography variant="h1">First store for you</Typography>
+      <Typography
+        sx={{ mt: 6 }}
+        variant="h1"
+        fontWeight={600}
+      >
+        First store for you
+      </Typography>
+
+      <Typography
+        sx={{ mb: 5, maxWidth: '70%' }}
+        variant="h6"
+        color="primary"
+        lineHeight={1.5}
+      >
+        Rails, active storage is a safe and easy method to upload, serve, and analyze files onto cloud-based storage services as well as local storage.
+      </Typography>
+
 
       <Grid container spacing={2}>
         {dummyProducts.map((product, index) => (

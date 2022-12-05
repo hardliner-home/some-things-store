@@ -1,31 +1,30 @@
 import React from 'react'
 
-import { DialogContent, DialogTitle } from '@mui/material'
+import { DialogContent, DialogTitle, Typography } from '@mui/material'
 
 // src
 import BaseModal from '../../atoms/BaseModal'
 import SignInForm from '../../organisms/SignInForm'
-import { AuthApiVariantType } from '../../../types'
 
 interface AuthModalProps {
-  type: AuthApiVariantType | null
+  open: boolean
   onClose: () => void
 }
 
-export default function AuthModal({ type, onClose }: AuthModalProps) {
+export default function AuthModal({ open, onClose }: AuthModalProps) {
 
   return (
     <BaseModal
-      open={Boolean(type)}
+      open={open}
       onClose={onClose}
+      maxWidth="xs"
     >
       <DialogTitle>
-        {Boolean(type) && type}
+        <Typography align="center">Sign in to account</Typography>
       </DialogTitle>
 
       <DialogContent>
-        {type === 'signIn' && <SignInForm />}
-        {type === 'signUp' && <SignInForm />}
+        <SignInForm />
       </DialogContent>
     </BaseModal>
   )

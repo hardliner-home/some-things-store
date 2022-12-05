@@ -2,7 +2,10 @@ export default {
   styleOverrides: {
     root: {
       textTransform: 'inherit',
-      borderRadius: 8
+      borderRadius: 32
+    },
+    containedPrimary: {
+      color: '#FFFFFF'
     }
   }
 }

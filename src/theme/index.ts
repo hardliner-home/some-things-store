@@ -4,6 +4,7 @@ import { createTheme, responsiveFontSizes } from '@mui/material/styles'
 import light from './palette/light'
 import typography from './typography'
 import MuiButton from './overrides/MuiButton'
+import MuiOutlinedInput from './overrides/MuiOutlinedInput'
 
 import { ThemeType } from '../types'
 
@@ -16,7 +17,8 @@ let theme = (mode: ThemeType) => {
     typography,
     components: {
       // @ts-ignore
-      MuiButton
+      MuiButton,
+      MuiOutlinedInput
     }
   }))
 }

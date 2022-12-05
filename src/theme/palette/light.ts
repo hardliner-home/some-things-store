@@ -2,7 +2,7 @@ import { red } from '@mui/material/colors'
 
 export default {
   primary: {
-    main: '#284afc',
+    main: '#00AAFF',
   },
   secondary: {
     main: '#38ffec',

@@ -13,6 +13,7 @@ import SEO from '../next-seo.config'
 import createEmotionCache from '../src/theme/createEmotionCache'
 import AuthContextProvider from '../src/providers/AuthContextProvider'
 import ThemeContextProvider from '../src/providers/ThemeContextProvider'
+import '../src/styles/globals.css'
 
 const clientSideEmotionCache = createEmotionCache()
 

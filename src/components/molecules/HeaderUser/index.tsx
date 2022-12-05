@@ -1,55 +1,59 @@
 import React, { useContext, useState } from 'react'
 
-import Image from 'next/image'
 import { styled } from '@mui/material/styles'
-import { Button, ButtonBase, Typography } from '@mui/material'
 
 // src
-import AuthModal from '../AuthModal'
 import { AuthContext } from '../../../providers/AuthContextProvider'
-import { AuthApiVariantType } from '../../../types'
+import AuthHeaderUser from '../AuthHeaderUser'
+import AuthHeaderActions from '../AuthHeaderActions'
+import { Button } from '@mui/material'
+import Link from 'next/link'
+import AuthModal from '../AuthModal'
 
 const Container = styled('div')`
   display: flex;
   align-items: center;
-`
-
-const Avatar = styled(Image)`
-  border-radius: 50%;
+  justify-content: space-between;
+  flex: 1;
 `
 
 export default function HeaderUser() {
   const { auth } = useContext(AuthContext)
-  const [authModalType, setAuthModalType] = useState<AuthApiVariantType | null>(null)
+  const [isOpen, setIsOpen] = useState<boolean>(false)
 
-  const onSignIn = () => setAuthModalType('signIn')
-  const onSignUp = () => setAuthModalType('signUp')
-  const onClose = () => setAuthModalType(null)
+  const onSignIn = () => setIsOpen(true)
+  const onClose = () => setIsOpen(false)
 
   return (
     <Container>
-      {auth.isSignedIn && (
+      {!auth.isSignedIn && (
         <>
-          <Avatar
-            width={36}
-            height={36}
-            src={auth.user.profilePic ?? 'https://www.automotiveone.com/wp-content/uploads/2019/02/placeholder-user-image.jpg'}
-            alt={auth.user.firstName}
-          />
-          <Typography>{ auth.user.firstName }</Typography>
+          <Button
+            variant="contained"
+            size="small"
+            onClick={onSignIn}
+          >
+            Post an Advert
+          </Button>
+          <AuthModal open={isOpen} onClose={onClose} />
         </>
       )}
 
-      {!auth.isSignedIn && (
-        <>
-          <Button onClick={onSignIn}>Sign In</Button>
-          <Button onClick={onSignUp} variant="contained">Sign Up</Button>
-          <AuthModal
-            type={authModalType}
-            onClose={onClose}
-          />
-        </>
+      {auth.isSignedIn && (
+        <Button
+          variant="contained"
+          size="small"
+          component={Link}
+          href="/new-post"
+        >
+          Post an Advert
+        </Button>
       )}
+
+      {auth.isSignedIn
+        ? <AuthHeaderUser user={auth.user} />
+        : <AuthHeaderActions />
+      }
     </Container>
   )
 }

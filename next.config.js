@@ -2,6 +2,9 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ['www.automotiveone.com']
+    domains: [
+      'localhost',
+      'www.automotiveone.com',
+    ]
   }
 };

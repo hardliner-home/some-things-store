@@ -8,7 +8,9 @@ import SearchRoundedIcon from '@mui/icons-material/SearchRounded'
 const SearchContainer = styled('div')`
   display: flex;
   align-items: center;
-  flex-grow: 1;
+  flex: 2;
+  margin-left: 16px;
+  margin-right: 16px;
 `
 
 const SearchIcon = styled(SearchRoundedIcon)`
@@ -17,12 +19,8 @@ const SearchIcon = styled(SearchRoundedIcon)`
 `
 
 const SearchInput = styled(OutlinedInput)`
-  padding-left: 0;
+  padding-left: 4px;
   padding-right: 4px;
-  border-radius: 10px;
-`
-
-const SearchButton = styled(Button)`
 `
 
 export default function HeaderSearchLine() {
@@ -35,13 +33,13 @@ export default function HeaderSearchLine() {
         placeholder="Find something..."
         startAdornment={<SearchIcon fontSize="small" />}
         endAdornment={
-          <SearchButton
+          <Button
             size="small"
             variant="contained"
             color="primary"
           >
             Search
-          </SearchButton>
+          </Button>
         }
       />
     </SearchContainer>
