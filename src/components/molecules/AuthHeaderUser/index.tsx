@@ -8,15 +8,15 @@ import {
   ListItemIcon, Divider,
 } from '@mui/material'
 import { styled } from '@mui/material/styles'
-import Image from 'next/image'
 
 import Logout from '@mui/icons-material/Logout'
 
 // src
 import { UserType } from '../../../types'
 import useAuthApi from '../../../hooks/useAuthApi'
+import ImageWithFallback from '../../ImageWithFallback'
 
-const Avatar = styled(Image)`
+const Avatar = styled(ImageWithFallback)`
   border-radius: 50%;
 `
 
@@ -28,7 +28,6 @@ interface AuthHeaderUserProps {
   user: UserType
 }
 
-const fishImage = 'https://www.automotiveone.com/wp-content/uploads/2019/02/placeholder-user-image.jpg'
 
 export default function AuthHeaderUser({ user }: AuthHeaderUserProps) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
@@ -51,7 +50,7 @@ export default function AuthHeaderUser({ user }: AuthHeaderUserProps) {
           height={36}
           placeholder="blur"
           blurDataURL="/android-chrome-192x192.png"
-          src={user.profilePicture ?? fishImage}
+          src={user.profilePicture ?? ''}
           alt={user.firstName}
         />
       </IconButton>
