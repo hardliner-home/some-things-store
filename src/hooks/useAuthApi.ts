@@ -62,8 +62,7 @@ export default function useAuthApi(variant: AuthApiVariantType) {
 
   const onSignOut = () => {
     axiosClient.delete('/users/sign_out')
-      .then(async (response) => {
-        await removeJWTBearerToken()
+      .then((response) => {
         setAuth({
           isLoading: false,
           isSignedIn: false,

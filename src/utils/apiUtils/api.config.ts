@@ -6,7 +6,7 @@ import { deserialize } from 'deserialize-json-api'
 import {
   getJWTBearerToken,
   setJWTBearerToken,
-  // removeJWTBearerToken
+  removeJWTBearerToken,
 } from './storage.config'
 
 const baseURL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3001'
@@ -26,8 +26,7 @@ const axiosClient = axios.create({
 axiosClient.interceptors.request.use(
   async request => {
     const token = await setJWTBearerToken()
-    // @ts-ignore
-    if (token) request.headers.Authorization = 'Bearer ' + token
+    if (token && request.headers) request.headers.Authorization = 'Bearer ' + token
     return request
   },
   (error) => {
@@ -40,9 +39,9 @@ axiosClient.interceptors.response.use(
     if ('authorization'in response.headers) {
       await getJWTBearerToken(response.headers.authorization as string)
     }
-    // if (endsWith(response.config.url, '/sign_out') && response.status === 200) {
-    //   await removeJWTBearerToken()
-    // }
+    if (response.config.url && response.config.url.includes('/sign_out') && response.status === 200) {
+      await removeJWTBearerToken()
+    }
     return {
       ...response,
       ...deserialize(response.data, { transformKeys: 'camelCase' })
