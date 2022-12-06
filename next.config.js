@@ -5,7 +5,10 @@ module.exports = {
     domains: [
       'localhost',
       'www.automotiveone.com',
-      'www.some-things-store-api.herokuapp.com'
+      'www.some-things-store-api.herokuapp.com',
+      'some-things-store-api.herokuapp',
+      'herokuapp.com',
+      'https://some-things-store-api.herokuapp.com',
     ]
   }
 };
