@@ -20,12 +20,12 @@ import Image from 'next/image'
 import { AuthContext } from '../../../providers/AuthContextProvider'
 
 const initialValues = {
-  email: 'shabanov.web@gmail.com',
-  password: '123456',
-  phone: '+79996985702',
+  email: '',
+  password: '',
+  phone: '',
   profilePicture: null,
-  firstName: 'Vladimir',
-  lastName: 'Shabanov',
+  firstName: '',
+  lastName: '',
 }
 
 const fishImage = 'https://www.automotiveone.com/wp-content/uploads/2019/02/placeholder-user-image.jpg'

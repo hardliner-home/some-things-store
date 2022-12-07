@@ -18,8 +18,8 @@ import Link from 'next/link'
 import { AuthContext } from '../../../providers/AuthContextProvider'
 
 const initialValues = {
-  email: 'shabanov.web@gmail.com',
-  password: '123456',
+  email: '',
+  password: '',
 }
 
 export default function SignInForm() {
