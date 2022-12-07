@@ -47,3 +47,13 @@ export type UserType = {
   fullName: string,
   profilePicture: string | null,
 }
+
+export type AddItemFormTextFieldType = {
+  field: string,
+  title: string,
+  placeholder: string,
+  type: string,
+  icon: string,
+  multiLine: boolean,
+  maxLines: number | undefined,
+}

@@ -5,11 +5,11 @@ import Container from '@mui/material/Container'
 // src
 import Header from '../../molecules/Header'
 
-interface SearchTemplateProps {
+interface DefaultTemplateProps {
   children: ReactElement
 }
 
-export default function SearchTemplate({ children }: SearchTemplateProps): JSX.Element {
+export default function DefaultTemplate({ children }: DefaultTemplateProps): JSX.Element {
 
   return (
     <>

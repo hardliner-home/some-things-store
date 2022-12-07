@@ -44,7 +44,7 @@ export default function HeaderUser() {
           variant="contained"
           size="small"
           component={Link}
-          href="/new-post"
+          href="/add-item"
         >
           Post an Advert
         </Button>

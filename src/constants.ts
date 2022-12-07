@@ -1,4 +1,4 @@
-import { ProductType } from './types'
+import { AddItemFormTextFieldType, ProductType } from './types'
 
 export const dummySingleProduct: ProductType = {
   id: 0,
@@ -36,3 +36,33 @@ export const dummySingleProduct: ProductType = {
 export const dummyProducts: ProductType[] = Array
   .from([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16])
   .map((item) => dummySingleProduct)
+
+export const AddItemFormFieldSet: AddItemFormTextFieldType[] = [
+  {
+    field: 'title',
+    title: 'Title',
+    placeholder: 'Type title',
+    type: 'text',
+    icon: '',
+    multiLine: false,
+    maxLines: undefined,
+  },
+  {
+    field: 'description',
+    title: 'Description',
+    placeholder: 'Type description',
+    type: 'text',
+    icon: '',
+    multiLine: true,
+    maxLines: 5,
+  },
+  {
+    field: 'price',
+    title: 'Price',
+    placeholder: 'Type Price',
+    type: 'number',
+    icon: '',
+    multiLine: false,
+    maxLines: undefined,
+  },
+]

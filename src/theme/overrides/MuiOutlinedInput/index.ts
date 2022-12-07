@@ -1,7 +1,15 @@
 export default {
   styleOverrides: {
-    root: {
-      borderRadius: 32
-    }
+    root: ({ ownerState }: any) => {
+      switch (ownerState.multiline) {
+        case true: return {
+          borderRadius: 16,
+        }
+        default:
+          return {
+            borderRadius: 32
+          }
+      }
+    },
   }
 }

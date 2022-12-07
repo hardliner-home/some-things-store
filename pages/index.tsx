@@ -7,7 +7,7 @@ import SearchTemplate from '../src/components/templates/SearchTemplate'
 import GridProductCard from '../src/components/atoms/GridProductCard'
 import { dummyProducts } from '../src/constants'
 
-export default function Home({ data }: { data: string }) {
+export default function Home() {
 
   return (
     <>
@@ -46,11 +46,4 @@ export default function Home({ data }: { data: string }) {
 
 Home.getLayout = function getLayout(page: ReactElement) {
   return <SearchTemplate>{page}</SearchTemplate>
-}
-
-export async function getServerSideProps() {
-  const data = 'server'
-  return {
-    props: { data },
-  }
 }
