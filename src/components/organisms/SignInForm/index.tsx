@@ -10,7 +10,7 @@ import {
 import { useFormik } from 'formik'
 
 import MailOutlineRoundedIcon from '@mui/icons-material/MailOutlineRounded'
-import LockOpenRoundedIcon from '@mui/icons-material/LockOpenRounded'
+import LockRoundedIcon from '@mui/icons-material/LockRounded'
 
 // src
 import useAuthApi from '../../../hooks/useAuthApi'
@@ -63,7 +63,7 @@ export default function SignInForm() {
             value={formik.values.password}
             startAdornment={
               <InputAdornment position="start">
-                <LockOpenRoundedIcon />
+                <LockRoundedIcon />
               </InputAdornment>
             }
           />

@@ -7,7 +7,6 @@ import { useRouter } from 'next/router'
 import { AuthContext } from '../providers/AuthContextProvider'
 import { axiosClient } from '../utils/apiUtils/api.config'
 import { toSnakeCase } from '../utils/baseUtils'
-import { removeJWTBearerToken } from '../utils/apiUtils/storage.config'
 import { AuthApiVariantType } from '../types'
 
 export default function useAuthApi(variant: AuthApiVariantType) {

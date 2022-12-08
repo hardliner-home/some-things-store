@@ -10,7 +10,7 @@ import {
 import { useFormik } from 'formik'
 
 import MailOutlineRoundedIcon from '@mui/icons-material/MailOutlineRounded'
-import LockOpenRoundedIcon from '@mui/icons-material/LockOpenRounded'
+import LockRoundedIcon from '@mui/icons-material/LockRounded'
 import PhoneAndroidRoundedIcon from '@mui/icons-material/PhoneAndroidRounded'
 import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded'
 
@@ -59,7 +59,7 @@ export default function SignUpForm() {
     { xs: 6, field: 'lastName', type: 'text', placeholder: 'Last name', icon: <PersonOutlineRoundedIcon /> },
     { xs: 12, field: 'phone', type: 'phone', placeholder: 'Phone', icon: <PhoneAndroidRoundedIcon /> },
     { xs: 12, field: 'email', type: 'email', placeholder: 'Email', icon: <MailOutlineRoundedIcon /> },
-    { xs: 12, field: 'password', type: 'password', placeholder: 'Password', icon: <LockOpenRoundedIcon /> },
+    { xs: 12, field: 'password', type: 'password', placeholder: 'Password', icon: <LockRoundedIcon /> },
 ]
 
   return (
