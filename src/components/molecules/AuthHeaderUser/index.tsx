@@ -14,7 +14,7 @@ import Logout from '@mui/icons-material/Logout'
 // src
 import { UserType } from '../../../types'
 import useAuthApi from '../../../hooks/useAuthApi'
-import ImageWithFallback from '../../ImageWithFallback'
+import ImageWithFallback from '../../atoms/ImageWithFallback'
 
 const Avatar = styled(ImageWithFallback)`
   border-radius: 50%;

@@ -1,5 +1,7 @@
 import React, { useRef } from 'react'
 
+import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded'
+
 import styled from '@emotion/styled'
 
 // src
@@ -7,8 +9,11 @@ import AddItemFormBasicTopic from '../../atoms/AddItemFormBasicTopic'
 import AddItemFormDndImages from '../AddItemFormDndImages'
 
 const AddImageBlock = styled('div')`
-  height: 80px;
-  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 100px;
   border: 1px solid lightgray;
   border-radius: 16px;
   -webkit-appearance: button;
@@ -45,21 +50,23 @@ export default function AddItemFormImagesField({ images, setImages }: AddItemFor
 
   return (
     <AddItemFormBasicTopic title="Photos">
-      <div>
-        <AddItemFormDndImages
-          images={items}
-          setImages={setImages}
-        />
-      </div>
-      {items.length < 8 && (
-        <AddImageBlock onClick={onAddImage} />
-      )}
-      <FileInput
-        type="file"
-        multiple
-        ref={fileInputRef}
-        onChange={onInputChange}
+      <AddItemFormDndImages
+        images={items}
+        setImages={setImages}
       />
+      {items.length < 8 && (
+        <>
+          <AddImageBlock onClick={onAddImage}>
+            <AddCircleOutlineRoundedIcon />
+          </AddImageBlock>
+          <FileInput
+            type="file"
+            multiple
+            ref={fileInputRef}
+            onChange={onInputChange}
+          />
+        </>
+      )}
     </AddItemFormBasicTopic>
 
   )

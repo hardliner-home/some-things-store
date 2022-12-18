@@ -31,7 +31,7 @@ export default function ThemeContextProvider({ children }: ThemeContextProviderP
 
   return (
     <ThemeContext.Provider value={{ themeMode, toggleTheme }}>
-      <ThemeProvider theme={theme(themeMode)}>
+      <ThemeProvider theme={theme}>
         <CssBaseline />
         {children}
       </ThemeProvider>

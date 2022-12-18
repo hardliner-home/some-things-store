@@ -16,11 +16,11 @@ export default function AddItemFormTextField({ field, value, onChange }: AddItem
   return (
     <AddItemFormBasicTopic key={field.field} title={field.title}>
       <OutlinedInput
-        fullWidth
         size="small"
         id={field.field}
         name={field.field}
         type={field.type}
+        fullWidth={field.fullWidth}
         placeholder={field.placeholder}
         multiline={field.multiLine}
         minRows={field.maxLines}

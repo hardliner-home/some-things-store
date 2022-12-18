@@ -1,38 +1,45 @@
-export type PriceType = {
-  currency: {
-    symbol: '₽' | '$' | '֏',
-    type: 'rubble' | 'dram' | 'dollar'
-  },
-  amount: number
-}
-
-export type AdvertType = {
-  type: 'product' | 'service',
-  advertisementPlan: 'none' | 'basic' | 'advanced',
-  urgency: 'low' | 'high'
+export type TimestumpType = {
+  updatedAt: string,
+  createdAt: string,
 }
 
 export type ImageType = {
   id: number,
-  src: string,
-  description: string | null
+  url: string,
 }
 
-export type AuthorType = {
+export type ItemType = {
   id: number,
-  fullName: string,
-  image: ImageType,
-}
-
-export type ProductType = {
-  id: number,
-  images: ImageType[],
-  author: AuthorType,
-  advertType: AdvertType,
-  price: PriceType,
   title: string,
   description: string | null
-}
+  photos: ImageType[],
+  user: UserType,
+  location: LocationType,
+  category: CategoryType,
+  price: string,
+} & TimestumpType
+
+export type CategoryType = {
+  id: number,
+  name: string,
+  ancestry: string | null,
+  children: CategoryType[]
+} & TimestumpType
+
+export type LocationType = {
+  id: number,
+  lat: number,
+  long: number,
+  place_id: string,
+  rowAddress: string,
+  postal_code: string,
+  city: string | null,
+  state: string | null,
+  country: string | null,
+  full_address: string | null,
+  locationableId: number,
+  locationableType: string,
+} & TimestumpType
 
 export type ThemeType = 'light' | 'dark'
 
@@ -46,7 +53,7 @@ export type UserType = {
   lastName: string,
   fullName: string,
   profilePicture: string | null,
-}
+} & TimestumpType
 
 export type AddItemFormTextFieldType = {
   field: string,
@@ -56,4 +63,10 @@ export type AddItemFormTextFieldType = {
   icon: string,
   multiLine: boolean,
   maxLines: number | undefined,
+  fullWidth: boolean
+}
+
+export type PointType = {
+  lat: number,
+  lng: number
 }

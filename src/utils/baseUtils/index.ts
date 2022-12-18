@@ -1,3 +1,5 @@
+import { ImageType } from '../../types'
+
 const get = (target: any, fieldName: string, defaultValue: any) => {
   const depthArray = fieldName.split('.')
 
@@ -31,9 +33,22 @@ const diff = (pure: any, dirty: any) => {
   return result
 }
 
+const shuffleArray = (array: ImageType[]) => {
+  let shuffled = [...array]
+
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  return shuffled
+}
+
 export {
   get,
   titleize,
   toSnakeCase,
-  diff
+  diff,
+  shuffleArray
 }
+

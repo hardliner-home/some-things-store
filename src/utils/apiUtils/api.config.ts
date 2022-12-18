@@ -9,7 +9,8 @@ import {
   removeJWTBearerToken,
 } from './storage.config'
 
-const baseURL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3001'
+// const baseURL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3001'
+const baseURL = 'http://localhost:3001'
 
 const headers = {
   'Accept': 'application/json',
@@ -25,8 +26,10 @@ const axiosClient = axios.create({
 
 axiosClient.interceptors.request.use(
   async request => {
-    const token = await setJWTBearerToken()
-    if (token && request.headers) request.headers.Authorization = 'Bearer ' + token
+    if (typeof window !== 'undefined') {
+      const token = await setJWTBearerToken()
+      if (token && request.headers) request.headers.Authorization = 'Bearer ' + token
+    }
     return request
   },
   (error) => {
@@ -36,11 +39,13 @@ axiosClient.interceptors.request.use(
 
 axiosClient.interceptors.response.use(
   async (response) => {
-    if ('authorization'in response.headers) {
-      await getJWTBearerToken(response.headers.authorization as string)
-    }
-    if (response.config.url && response.config.url.includes('/sign_out') && response.status === 200) {
-      await removeJWTBearerToken()
+    if (typeof window !== 'undefined') {
+      if ('authorization' in response.headers) {
+        await getJWTBearerToken(response.headers.authorization as string)
+      }
+      if (response.config.url && response.config.url.includes('/sign_out') && response.status === 200) {
+        await removeJWTBearerToken()
+      }
     }
     return {
       ...response,

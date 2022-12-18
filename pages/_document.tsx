@@ -3,7 +3,7 @@ import Document, { Html, Head, Main, NextScript } from 'next/document'
 import createEmotionServer from '@emotion/server/create-instance'
 
 // src
-import theme from '../src/theme/theme'
+import theme from '../src/theme'
 import { workSans } from '../src/theme/typography'
 import createEmotionCache from '../src/theme/createEmotionCache'
 

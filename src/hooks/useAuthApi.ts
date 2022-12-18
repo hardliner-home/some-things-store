@@ -38,6 +38,7 @@ export default function useAuthApi(variant: AuthApiVariantType) {
     const userValues = new FormData()
 
     for (const key in values) {
+      if (key === 'profilePicture' && typeof values[key] !== typeof File) continue
       userValues.append(`user[${toSnakeCase(key)}]`, values[key])
     }
 

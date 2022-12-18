@@ -1,6 +1,5 @@
 import React from 'react'
 
-import Image from 'next/image'
 import {
   AppBar,
   Container,
@@ -13,11 +12,11 @@ import HeaderSearchLine from '../../atoms/HeaderSearchLine'
 import HeaderLogo from '../../atoms/HeaderLogo'
 import HeaderUser from '../HeaderUser'
 
-const Offset = styled('div')(({ theme }) => theme.mixins.toolbar)
-
 interface HeaderProps {
   window?: () => Window;
 }
+
+const Offset = styled('div')(({ theme }) => theme.mixins.toolbar)
 
 export default function Header({ window }: HeaderProps): JSX.Element {
 
@@ -27,9 +26,15 @@ export default function Header({ window }: HeaderProps): JSX.Element {
         color="inherit"
         position="fixed"
         component="header"
+        elevation={0}
+        sx={{
+          borderWidth: 1,
+          borderStyle: 'solid',
+          borderColor: 'lightgrey'
+        }}
       >
         <Toolbar
-          maxWidth={false}
+          // maxWidth={false}
           component={Container}
         >
           <HeaderLogo />

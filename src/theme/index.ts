@@ -1,26 +1,17 @@
 import { createTheme, responsiveFontSizes } from '@mui/material/styles'
 
 // src
-import light from './palette/light'
+import palette from './palette'
 import typography from './typography'
-import MuiButton from './overrides/MuiButton'
-import MuiOutlinedInput from './overrides/MuiOutlinedInput'
+import components from './overrides'
 
-import { ThemeType } from '../types'
-
-let theme = (mode: ThemeType) => {
-  return responsiveFontSizes(createTheme({
-    palette: {
-      mode,
-      ...light
-    },
+const theme = responsiveFontSizes(
+  createTheme({
+    palette,
     typography,
-    components: {
-      // @ts-ignore
-      MuiButton,
-      MuiOutlinedInput
-    }
-  }))
-}
+    // @ts-ignore
+    components,
+  })
+)
 
 export default theme

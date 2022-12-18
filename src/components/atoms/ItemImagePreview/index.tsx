@@ -4,14 +4,12 @@ import { CardMedia, Divider } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
 // src
+import { altPlaceholder, imagePlaceholder } from '../../../constants'
 import { ImageType } from '../../../types'
 
-interface ProductImagePreviewProps {
+interface ItemImagePreviewProps {
   images: ImageType[]
 }
-
-const imagePlaceholder = 'https://mui.com/static/images/cards/contemplative-reptile.jpg'
-const altPlaceholder = 'Product Image'
 
 const BaseLayer = styled('div')`
   display: flex;
@@ -42,8 +40,8 @@ const Indicator = styled(Divider)`
   height: 2px;
 `
 
-export default function ProductImagePreview({ images }: ProductImagePreviewProps) {
-  const [currentImage, setCurrentImage] = useState<string>(images[0].src)
+export default function ItemImagePreview({ images }: ItemImagePreviewProps) {
+  const [currentImage, setCurrentImage] = useState<string>(images.length > 0 ? images[0].url : imagePlaceholder)
   const [grid, setGrid] = useState<boolean>(false)
 
   const count = images.length
@@ -55,7 +53,7 @@ export default function ProductImagePreview({ images }: ProductImagePreviewProps
   const onImageLeave = () => {
     if (count > 0) {
       setGrid(false)
-      setCurrentImage(images[0].src)
+      setCurrentImage(images[0].url)
     }
   }
 
@@ -67,9 +65,9 @@ export default function ProductImagePreview({ images }: ProductImagePreviewProps
             <OverLayerItem
               count={count}
               key={image.id}
-              onMouseEnter={setCurrentImage.bind(null, image.src)}
+              onMouseEnter={setCurrentImage.bind(null, image.url)}
             >
-              <Indicator color={image.src === currentImage ? 'secondary.light' : 'white'} />
+              <Indicator color={image.url === currentImage ? 'secondary.light' : 'white'} />
             </OverLayerItem>
           ))}
         </OverLayer>
@@ -79,7 +77,7 @@ export default function ProductImagePreview({ images }: ProductImagePreviewProps
         component="img"
         height="180"
         image={currentImage ?? imagePlaceholder}
-        alt={images[0].description ?? altPlaceholder}
+        alt={altPlaceholder}
       />
     </BaseLayer>
   )

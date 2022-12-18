@@ -15,13 +15,10 @@ import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded
 import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded'
 
 // src
-import { ProductType } from '../../../types'
-import ProductImagePreview from '../ProductImagePreview'
-
-const RoundedCard = styled(Card)`
-  //border-radius: 8px;
-  position: relative;
-`
+import { ItemType } from '../../../types'
+import GridItemCardContent from '../GridItemCardContent'
+import ItemImagePreview from '../ItemImagePreview'
+import GridItemCardWrapper from '../GridItemCardWrapper'
 
 const PriceContainer = styled('div')`
   display: flex;
@@ -37,39 +34,30 @@ const LikeButton = styled(IconButton)`
   z-index: 1;
 `
 
-const ProductCardContent = styled(CardContent)`
-  padding-bottom: 8px;
-  padding-top: 8px;
-  &:last-child {
-    padding-bottom: 8px;
-  },
-`
-
 interface GridProductCardProps {
-  product: ProductType
+  item: ItemType
 }
 
-export default function GridProductCard({ product }: GridProductCardProps) {
+export default function GridItemCard({ item }: GridProductCardProps) {
 
   return (
-    <RoundedCard elevation={2} square>
+    <GridItemCardWrapper>
       <LikeButton size="small" aria-label="Like Button">
         <FavoriteBorderRoundedIcon color="primary" />
       </LikeButton>
 
-      <ProductImagePreview images={product.images}/>
-
+      <ItemImagePreview images={item.photos} />
       <Divider/>
 
-      <ProductCardContent>
+      <GridItemCardContent>
         <Typography
           variant="subtitle1"
           fontWeight="bold"
           color="primary"
           component={Link}
-          href={`/${product.id}`}
+          href={`/item/${item.id}`}
         >
-          {product.title}
+          {item.title}
         </Typography>
 
         <Typography
@@ -81,7 +69,7 @@ export default function GridProductCard({ product }: GridProductCardProps) {
             WebkitLineClamp: 2,
           }}
         >
-          {product.description}
+          {item.description}
         </Typography>
 
         <PriceContainer>
@@ -91,7 +79,7 @@ export default function GridProductCard({ product }: GridProductCardProps) {
               fontWeight="bold"
               color="primary"
             >
-              {product.price.amount} {product.price.currency.symbol}
+              {item.price}
             </Typography>
           </Tooltip>
 
@@ -99,7 +87,7 @@ export default function GridProductCard({ product }: GridProductCardProps) {
             <MoreHorizRoundedIcon/>
           </IconButton>
         </PriceContainer>
-      </ProductCardContent>
-    </RoundedCard>
+      </GridItemCardContent>
+    </GridItemCardWrapper>
   )
 }

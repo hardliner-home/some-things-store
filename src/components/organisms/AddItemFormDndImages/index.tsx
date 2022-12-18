@@ -1,7 +1,9 @@
 import React from 'react'
+
 import {
   DndContext,
   closestCenter,
+
 } from '@dnd-kit/core'
 import {
   arrayMove,
@@ -19,14 +21,12 @@ interface AddItemFormDndImagesProps {
 
 export default function AddItemFormDndImages({ images, setImages }: AddItemFormDndImagesProps) {
 
-  const imageSourceLinks = images.map(image => URL.createObjectURL(image))
-
   const handleDragEnd = (event: any) => {
     const { active, over } = event
 
     if (active.id !== over.id) {
-      const activeIndex = imageSourceLinks.indexOf(active.id)
-      const overIndex = imageSourceLinks.indexOf(over.id)
+      const activeIndex = images.findIndex(item => item.name === active.id.name)
+      const overIndex = images.findIndex(item => item.name === over.id.name)
       setImages('images', arrayMove(images, activeIndex, overIndex))
     }
   }
@@ -40,8 +40,11 @@ export default function AddItemFormDndImages({ images, setImages }: AddItemFormD
         items={images}
         strategy={horizontalListSortingStrategy}
       >
-        {imageSourceLinks.length > 0 && imageSourceLinks.map((src: any, index) => (
-          <SortableItemImage key={index} id={src} />
+        {images.length > 0 && images.map((image: any, index) => (
+          <SortableItemImage
+            key={image.name}
+            image={image}
+          />
         ))}
       </SortableContext>
     </DndContext>

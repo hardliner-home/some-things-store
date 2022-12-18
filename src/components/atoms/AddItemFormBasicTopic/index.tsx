@@ -11,12 +11,12 @@ export default function AddItemFormBasicTopic({ title, children }: AddItemFormBa
 
   return (
     <Grid item xs={12}>
-      <Grid container spacing={2}>
-        <Grid item xs={3}>
-          {title && <Typography fontWeight="bold">{title}</Typography>}
+      <Grid container>
+        <Grid item xs={12} md={3}>
+          {title && <Typography color="primary" fontWeight="bold">{title}</Typography>}
         </Grid>
 
-        <Grid item xs={9}>
+        <Grid item xs={12} md={9} sx={{ display:'flex', flexFlow: 'wrap' }}>
           {children}
         </Grid>
       </Grid>
