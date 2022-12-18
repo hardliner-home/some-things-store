@@ -20,10 +20,6 @@ export default function Secret({ categoriesArray }: SecretProps) {
   const [value, setValue] = useState<string>('')
   const [parentId, setParentId] = useState<string>('')
 
-  console.log(categoriesArray)
-  console.log(categories)
-
-
   const onSave = () => {
     const category: NewCategoryType = { name: value }
     if (parentId) category.parent_id = parentId
@@ -101,6 +97,6 @@ export async function getStaticProps() {
   const categories = request.data
 
   return {
-    props: { categories }
+    props: { categoriesArray: categories }
   }
 }
