@@ -9,8 +9,7 @@ import {
   removeJWTBearerToken,
 } from './storage.config'
 
-// const baseURL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3001'
-const baseURL = 'http://localhost:3001'
+const baseURL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3001'
 
 const headers = {
   'Accept': 'application/json',
