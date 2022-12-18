@@ -7,7 +7,7 @@ import { axiosClient } from '../../src/utils/apiUtils/api.config'
 import { CategoryType } from '../../src/types'
 
 interface SecretProps {
-  categories: CategoryType[]
+  categoriesArray: CategoryType[]
 }
 
 type NewCategoryType = {
@@ -15,9 +15,12 @@ type NewCategoryType = {
   parent_id?: string
 }
 
-export default function Secret({ categories }: SecretProps) {
+export default function Secret({ categoriesArray }: SecretProps) {
+  const [categories, setCategories] = useState<CategoryType[]>(categoriesArray)
   const [value, setValue] = useState<string>('')
   const [parentId, setParentId] = useState<string>('')
+
+  console.log(categories)
 
 
   const onSave = () => {
@@ -27,7 +30,14 @@ export default function Secret({ categories }: SecretProps) {
     axiosClient.post('/categories', { category })
       .then(() => {
         setValue('')
-        setParentId('')
+        
+        axiosClient.get('/categories')
+          .then((response) => {
+            setCategories(response.data)
+          })
+          .catch((error) => {
+            console.log(error)
+          })
       })
   }
 
