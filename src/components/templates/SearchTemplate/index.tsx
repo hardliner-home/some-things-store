@@ -10,7 +10,7 @@ import RootCategories from '../../molecules/RootCategories'
 
 interface SearchTemplateProps {
   children: ReactElement
-  categories: CategoryType[]
+  categories?: CategoryType[]
 }
 
 export default function SearchTemplate({ children, categories }: SearchTemplateProps): JSX.Element {
@@ -45,7 +45,7 @@ export default function SearchTemplate({ children, categories }: SearchTemplateP
             <Grid container spacing={3} direction="row">
               <Grid item xs={3}>
                 <Box sx={{ position: 'sticky', top: 64 }}>
-                  <RootCategories categories={categories} />
+                  {categories && <RootCategories categories={categories} />}
                 </Box>
               </Grid>
 

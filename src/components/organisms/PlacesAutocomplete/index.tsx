@@ -41,11 +41,15 @@ export default function PlacesAutocomplete({ setSelected }: PlacesAutocompletePr
         fields: ['address_component', 'adr_address', 'formatted_address', 'geometry.location', 'name', 'place_id']
       })
 
+      // @ts-ignore
       details.geometry.location = {
+        // @ts-ignore
         lat: details.geometry.location.lat(),
+        // @ts-ignore
         lng: details.geometry.location.lng()
       }
 
+      // @ts-ignore
       setSelected('location', details)
     }
   }

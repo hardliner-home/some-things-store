@@ -22,6 +22,7 @@ export type ItemType = {
 export type CategoryType = {
   id: number,
   name: string,
+  slug: string,
   ancestry: string | null,
   children: CategoryType[]
 } & TimestumpType

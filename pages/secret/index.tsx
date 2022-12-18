@@ -1,17 +1,27 @@
 import React, { useState, Fragment } from 'react'
 
-import { Box, Button, Grid, TextField, Typography } from '@mui/material'
+import { Button, Grid, TextField, Typography } from '@mui/material'
 
 // src
 import { axiosClient } from '../../src/utils/apiUtils/api.config'
+import { CategoryType } from '../../src/types'
 
-export default function Secret({ categories }) {
-  const [value, setValue] = useState('')
-  const [parentId, setParentId] = useState('')
+interface SecretProps {
+  categories: CategoryType[]
+}
+
+type NewCategoryType = {
+  name: string,
+  parent_id?: string
+}
+
+export default function Secret({ categories }: SecretProps) {
+  const [value, setValue] = useState<string>('')
+  const [parentId, setParentId] = useState<string>('')
 
 
   const onSave = () => {
-    const category = { name: value }
+    const category: NewCategoryType = { name: value }
     if (parentId) category.parent_id = parentId
 
     axiosClient.post('/categories', { category })
