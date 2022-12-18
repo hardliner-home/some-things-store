@@ -16,10 +16,11 @@ type NewCategoryType = {
 }
 
 export default function Secret({ categoriesArray }: SecretProps) {
-  const [categories, setCategories] = useState<CategoryType[]>(categoriesArray)
+  const [categories, setCategories] = useState<CategoryType[]>(categoriesArray || [])
   const [value, setValue] = useState<string>('')
   const [parentId, setParentId] = useState<string>('')
 
+  console.log(categoriesArray)
   console.log(categories)
 
 
@@ -30,7 +31,7 @@ export default function Secret({ categoriesArray }: SecretProps) {
     axiosClient.post('/categories', { category })
       .then(() => {
         setValue('')
-        
+
         axiosClient.get('/categories')
           .then((response) => {
             setCategories(response.data)
