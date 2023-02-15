@@ -5,16 +5,15 @@ import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
 
 import Head from 'next/head'
-import CssBaseline from '@mui/material/CssBaseline'
-import { ThemeProvider } from '@mui/material/styles'
 import { CacheProvider, EmotionCache } from '@emotion/react'
 import { DefaultSeo } from 'next-seo'
 
 // src
 import SEO from '../next-seo.config'
-import theme from '../src/theme'
-import createEmotionCache from '../src/createEmotionCache'
+import createEmotionCache from '../src/theme/createEmotionCache'
 import AuthContextProvider from '../src/providers/AuthContextProvider'
+import ThemeContextProvider from '../src/providers/ThemeContextProvider'
+import '../src/styles/globals.css'
 
 const clientSideEmotionCache = createEmotionCache()
 
@@ -35,19 +34,33 @@ export default function MyApp({ Component, emotionCache = clientSideEmotionCache
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width"/>
 
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID}`} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+    
+              gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID}');
+            `
+          }}
+        />
+
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
         <link rel="manifest" href="/site.webmanifest"/>
       </Head>
+
+
       <DefaultSeo {...SEO} />
 
-      <ThemeProvider theme={theme}>
-        <CssBaseline/>
-        <AuthContextProvider>
+      <AuthContextProvider>
+        <ThemeContextProvider>
           {getLayout(<Component {...pageProps} />)}
-        </AuthContextProvider>
-      </ThemeProvider>
+        </ThemeContextProvider>
+      </AuthContextProvider>
     </CacheProvider>
   )
 }

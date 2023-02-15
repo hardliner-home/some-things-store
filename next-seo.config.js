@@ -1,10 +1,10 @@
 export default {
-  title: "Feature Store",
+  title: "SomeThings store",
   description: "Buy and Sell things here",
   openGraph: {
     type: 'website',
     locale: 'en',
-    url: 'https://www.feature-store.com/',
-    siteName: 'Feature Store',
+    url: 'https://www.somve-things.store/',
+    siteName: 'SomeThings store',
   }
 };

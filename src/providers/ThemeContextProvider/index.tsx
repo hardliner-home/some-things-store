@@ -1,22 +1,40 @@
 import React, { ReactNode, createContext, useState } from 'react'
-// import CssBaseline from '@mui/material/CssBaseline'
-// import { ThemeProvider } from '@mui/material/styles'
+import CssBaseline from '@mui/material/CssBaseline'
+import { ThemeProvider } from '@mui/material/styles'
 
 // src
 import theme from '../../theme'
+import { ThemeType } from '../../types'
 
+type InitialThemeContextType = {
+  themeMode: ThemeType,
+  toggleTheme: () => void
+}
 
-export const ThemeContext = createContext({})
+const initialThemeContext: InitialThemeContextType = {
+  themeMode: 'light',
+  toggleTheme: () => {}
+}
 
-export default function ThemeContextProvider({ children }) {
-  const [themeMode, setThemeMode] = useState('light')
+interface ThemeContextProviderProps {
+  children: ReactNode
+}
+
+export const ThemeContext = createContext(initialThemeContext)
+
+export default function ThemeContextProvider({ children }: ThemeContextProviderProps) {
+  const [themeMode, setThemeMode] = useState<ThemeType>('light')
+
+  const toggleTheme = () => {
+    setThemeMode(prev => prev === 'light' ? 'dark' : 'light')
+  }
 
   return (
-    <ThemeContext.Provider value={{ themeMode, setThemeMode }}>
-      {/*<ThemeProvider theme={theme}>*/}
-        {/*<CssBaseline />*/}
+    <ThemeContext.Provider value={{ themeMode, toggleTheme }}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
         {children}
-      {/*</ThemeProvider>*/}
+      </ThemeProvider>
     </ThemeContext.Provider>
   )
 }
